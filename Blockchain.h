@@ -6,7 +6,7 @@
 #include <mutex>
 #include <thread>
 #include "Block.h"
-
+#include <future>
 class Blockchain {
 public:
 

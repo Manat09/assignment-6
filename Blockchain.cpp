@@ -27,13 +27,13 @@ Blockchain::Blockchain() {
 
 void Blockchain::printBlockchain() {
     for(auto const &it : chain){
-        cout << it.getIndex() << ": " << it.getTransactionData().timestamp << " " << it.getTransactionData().senderKey << " -> " << it.getTransactionData().receiverKey << ", amount: " << it.getTransactionData().amount << "\n";
+        cout <<"ID: "<< it.getIndex() << ": " << it.getTransactionData().timestamp << " " << it.getTransactionData().senderKey << " - " << it.getTransactionData().receiverKey << ", amount: " << it.getTransactionData().amount << "\n";
     }
 }
 
 bool Blockchain::isBlockchainValid() {
-    for(auto const &to : chain){
-        if(to.getBlockHash() != to.generateHash()) {
+    for(auto const &it : chain){
+        if(it.getBlockHash() != it.generateHash()) {
             return false;
         }
     }

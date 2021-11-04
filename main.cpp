@@ -7,7 +7,7 @@
 #include <future>
 using namespace std;
 //mutex mu;
-double getTotalVolume(Blockchain &chain){
+double getTotalVolume(Blockchain chain){
     double amount = 0;
     for(auto const &it : chain.chain){
         amount += it.getTransactionData().amount;
@@ -46,9 +46,9 @@ int main(){
 
     blockchain->printBlockchain();
 
-//    future<double> res = async(launch::async, getTotalVolume, blockchain);
-//    double  dataRes = res.get();
-//    cout<<dataRes<<endl;
+    future<double> res = async(launch::async, getTotalVolume, *blockchain);
+    double  dataRes = res.get();
+    cout<<"Total volume is: "<<dataRes<<endl;
 
     cout << (blockchain->isBlockchainValid() ? "Valid" : "Invalid");
 }
