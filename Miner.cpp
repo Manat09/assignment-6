@@ -2,6 +2,7 @@
 mutex mu;
 bool Miner::miner(Blockchain blockchain, TransactionData data) {
     lock_guard<mutex> guard(mu);
+
     //mu.lock();
     srand(time(0));
     int captcha;
