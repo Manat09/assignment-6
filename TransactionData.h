@@ -1,7 +1,3 @@
-//
-// Created by undefined on 03.11.2021.
-//
-
 #ifndef BLOCKCHAIN_TRANSACTIONDATA_H
 #define BLOCKCHAIN_TRANSACTIONDATA_H
 
@@ -9,7 +5,7 @@
 #include <string>
 #include <ctime>
 #include <mutex>
-
+#include <thread>
 using namespace std;
 
 class TransactionData {

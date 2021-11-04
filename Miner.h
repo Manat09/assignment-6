@@ -1,13 +1,11 @@
-//
-// Created by undefined on 03.11.2021.
-//
-
 #ifndef BLOCKCHAIN_MINER_H
 #define BLOCKCHAIN_MINER_H
+
 #include <iostream>
 #include <thread>
 #include <ctime>
 #include <cmath>
+#include <mutex>
 
 #include "Blockchain.h"
 #include "Block.h"

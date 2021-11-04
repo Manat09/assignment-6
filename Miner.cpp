@@ -1,7 +1,3 @@
-//
-// Created by undefined on 03.11.2021.
-//
-
 #include "Miner.h"
 mutex mu;
 bool Miner::miner(Blockchain blockchain, TransactionData data) {
@@ -47,10 +43,11 @@ bool Miner::miner(Blockchain blockchain, TransactionData data) {
     this_thread::sleep_for(chrono::milliseconds(1000));
     mu.unlock();
     return true;
+
 }
 
 bool Miner::miner2(Blockchain blockchain, TransactionData data) {
-    mu.lock();
+  //  mu.lock();
     srand(time(NULL));
     char letters[]={"ABCDEFGHIJKLMNOPQRSTUVWXYZ"};
     char randLetters[] = {letters[rand() % 25], letters[rand() % 25], letters[rand() % 25]};
@@ -89,6 +86,6 @@ bool Miner::miner2(Blockchain blockchain, TransactionData data) {
 
     cout<<"Captcha was solved"<<endl;
     this_thread::sleep_for(chrono::milliseconds(1000));
-    mu.unlock();
+ //   mu.unlock();
     return true;
 }

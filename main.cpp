@@ -6,7 +6,7 @@
 #include <mutex>
 #include <future>
 using namespace std;
-mutex mu;
+//mutex mu;
 double getTotalVolume(Blockchain &chain){
     double amount = 0;
     for(auto const &it : chain.chain){

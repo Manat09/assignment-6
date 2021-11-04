@@ -1,14 +1,10 @@
-//
-// Created by undefined on 02.11.2021.
-//
+#ifndef BLOCKCHAIN_BLOCK_H
+#define BLOCKCHAIN_BLOCK_H
 
 #include <iostream>
 #include "TransactionData.h"
 #include <mutex>
-
-#ifndef BLOCKCHAIN_BLOCK_H
-#define BLOCKCHAIN_BLOCK_H
-
+#include <thread>
 
 class Block {
 private:
