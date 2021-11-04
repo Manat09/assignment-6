@@ -1,7 +1,8 @@
 #include "Miner.h"
 mutex mu;
 bool Miner::miner(Blockchain blockchain, TransactionData data) {
-    mu.lock();
+    lock_guard<mutex> guard(mu);
+    //mu.lock();
     srand(time(0));
     int captcha;
     cout<<"Please complete these simple tasks in order to continue:"<<endl;
@@ -41,7 +42,7 @@ bool Miner::miner(Blockchain blockchain, TransactionData data) {
     }
     cout<<"Captcha was solved"<<endl;
     this_thread::sleep_for(chrono::milliseconds(1000));
-    mu.unlock();
+    //mu.unlock();
     return true;
 
 }
