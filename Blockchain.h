@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <vector>
+#include <mutex>
 #include "Block.h"
 
 class Blockchain {

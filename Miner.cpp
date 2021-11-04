@@ -3,8 +3,9 @@
 //
 
 #include "Miner.h"
-
+mutex mu;
 bool Miner::miner(Blockchain blockchain, TransactionData data) {
+    mu.lock();
     srand(time(0));
     int captcha;
     cout<<"Please complete these simple tasks in order to continue:"<<endl;
@@ -44,11 +45,12 @@ bool Miner::miner(Blockchain blockchain, TransactionData data) {
     }
     cout<<"Captcha was solved"<<endl;
     this_thread::sleep_for(chrono::milliseconds(1000));
+    mu.unlock();
     return true;
 }
 
 bool Miner::miner2(Blockchain blockchain, TransactionData data) {
-
+    mu.lock();
     srand(time(NULL));
     char letters[]={"ABCDEFGHIJKLMNOPQRSTUVWXYZ"};
     char randLetters[] = {letters[rand() % 25], letters[rand() % 25], letters[rand() % 25]};
@@ -87,5 +89,6 @@ bool Miner::miner2(Blockchain blockchain, TransactionData data) {
 
     cout<<"Captcha was solved"<<endl;
     this_thread::sleep_for(chrono::milliseconds(1000));
+    mu.unlock();
     return true;
 }
