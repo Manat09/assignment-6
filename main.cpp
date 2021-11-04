@@ -3,12 +3,13 @@
 #include "TransactionData.h"
 #include "Miner.h"
 #include <mutex>
+#include <future>
 using namespace std;
 
 double getTotalVolume(Blockchain &chain){
     double amount = 0;
-    for(auto const &to : chain.chain){
-        amount += to.getTransactionData().amount;
+    for(auto const &it : chain.chain){
+        amount += it.getTransactionData().amount;
     }
     return amount;
 }
@@ -43,6 +44,10 @@ int main(){
     th2.join();
 
     blockchain->printBlockchain();
+
+    future<double> res = async(launch::async, getTotalVolume, blockchain);
+    double  dataRes = res.get();
+    cout<<dataRes<<endl;
 
     cout << (blockchain->isBlockchainValid() ? "Valid" : "Invalid");
 }
