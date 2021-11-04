@@ -2,6 +2,7 @@
 #include "Block.h"
 #include "TransactionData.h"
 #include "Miner.h"
+#include <mutex>
 using namespace std;
 
 double getTotalVolume(Blockchain &chain){
@@ -26,14 +27,13 @@ void new_thread2(Blockchain *blockchain, TransactionData data, Miner miner){
 int main(){
     Blockchain *blockchain = new Blockchain();
 
-    blockchain->addBlock(*new TransactionData(100, "Manat", "Yerassyl", time(0)));
-    blockchain->addBlock(*new TransactionData(50, "Abdu", "Yerassyl", time(0)));
-    blockchain->addBlock(*new TransactionData(150, "Yerassyl", "Andrey", time(0)));
+    blockchain->addBlock(*new TransactionData(10, "Manat", "Yerassyl", time(0)));
+    blockchain->addBlock(*new TransactionData(20, "Abdu", "Andrey", time(0)));
 
     blockchain->printBlockchain();
 
-    TransactionData data = *new TransactionData(1000, "Eren", "Mikasa", time(0));
-    TransactionData data1 = *new TransactionData(500, "Zoro", "Batman", time(0));
+    TransactionData data = *new TransactionData(30, "Eren", "Mikasa", time(0));
+    TransactionData data1 = *new TransactionData(40, "Zoro", "Batman", time(0));
 
     Miner miner;
 
